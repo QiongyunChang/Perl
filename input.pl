@@ -7,7 +7,7 @@
 #####...............input from file.............
 # the first way
 
-open ss,"<grade_sheet.txt";
+#open ss,"<grade_sheet.txt";
 #@input=<ss>;  #read data from ss line by line to an array
 #close ss;
 #print  "@input\n";
@@ -18,11 +18,21 @@ open ss,"<grade_sheet.txt";
 #	print"$input[$_]\n";
 #}
 
-$allpart = "";
-open ss,"<grade_sheet.txt";
-while($_=<ss>){$allpart.=$_;}
+#$allpart = "";
+#open ss,"<grade_sheet.txt";
+#while($_=<ss>){$allpart.=$_;} 
+#close ss;
+#print $allpart;
+#
+
+@keep="";
+open ss, "<grade_sheet.txt";
+while(<ss>) {
+	@temp =split;
+	if ($temp[-1] <= 50){push (@keep,$_);}
+}
 close ss;
-print $allpart;
+print @keep;
 
 #####.............build-in-data....................
 #$line="hello world!";
